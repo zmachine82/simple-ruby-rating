@@ -1,6 +1,9 @@
 require_relative "main"
 require_relative "menu_option"
 require_relative "ShowQuotesCommand"
+require_relative "AddQuoteCommand"
+require_relative "question"
+
 
 
 class Menu
@@ -42,6 +45,6 @@ system = RatingSystem.new
 puts "Welcome to Quote Rater!"
 menu = Menu.new([
     MenuOption.new("1", "Show All Quotes", ShowQuotesCommand.new(system.quotes)),
-    MenuOption.new("2", "Add a Quote"),
+    MenuOption.new("2", "Add a Quote", AddQuoteCommand.new(system.quotes)),
     
 ])
