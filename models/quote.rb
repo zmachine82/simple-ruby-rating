@@ -6,5 +6,9 @@ class Quote
         @author = author
     end
 
+    def to_s
+        "#{@text} by: #{@author}"
+    end
+
     
 end

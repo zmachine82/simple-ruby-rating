@@ -1,6 +1,7 @@
 require_relative 'raters/owen_rater'
 require_relative 'raters/random_rater'
 require_relative 'models/quote'
+require_relative 'models/rating'
 
 
 class RatingSystem
@@ -29,12 +30,19 @@ class RatingSystem
         @raters.each do |rater| 
             @quotes.each do |quote| 
                 rating = rater.rate(quote.text)
-                @ratings.push("#{rater.name} rated '#{quote.text}' a #{rating} out of 5")
+                @ratings.push(Rating.new(rating, quote, rater))
             end
         end
-        
-        @ratings.each do |r|
-            puts r
+    end
+
+
+    def display_ratings
+
+        @ratings = @ratings.sort {|a,b| b.score <=> a.score  }
+
+
+        @ratings.each do |rating|
+            puts rating
         end
     end
 end
