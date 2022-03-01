@@ -10,5 +10,14 @@ class Quote
         "#{@text} by: #{@author}"
     end
 
+    def to_csv
+        {:text => @text, :author => @author}
+    end
+
+    def self.from_csv(hash)
+        Quote.new(hash.field(:text), hash.field(:author))
+    end
+  
+
     
 end
